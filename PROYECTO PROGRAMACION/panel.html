@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - TechNieto</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body style="background-color: #f4f6f9; color: #333;">
+
+    <nav class="navbar" style="background-color: #354eab;">
+        <div class="logo" style="color: white;">Aleemnzz - Panel Privado</div>
+        <button id="btn-cerrar-sesion" class="btn-login">Cerrar Sesión</button>
+    </nav>
+
+    <div style="padding: 40px; text-align: left; max-width: 1000px; margin: 0 auto;">
+        <h1 id="mensaje-bienvenida" style="color: #354eab;">Cargando...</h1>
+        <p>Desde acá vas a poder gestionar tus clientes, reparaciones y presupuestos.</p>
+        
+        <div class="tarjeta-panel">
+            <h3 style="color: #354eab; margin-top: 0;">Nueva Orden de Reparación</h3>
+            <form id="form-orden">
+                <div class="grupo-input">
+                    <input type="text" id="cliente" placeholder="Nombre del cliente" required>
+                </div>
+                <div class="grupo-input">
+                    <input type="text" id="dni" placeholder="DNI del cliente (Será su usuario)" required>
+                </div>
+                <div class="grupo-input">
+                    <input type="text" id="equipo" placeholder="Equipo (Ej: Notebook Dell, PC Escritorio)" required>
+                </div>
+                <div class="grupo-input">
+                    <input type="text" id="problema" placeholder="Problema a reparar / Servicio a realizar" required>
+                </div>
+                <div class="grupo-input">
+                    <select id="estado" style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; width: 100%; box-sizing: border-box;">
+                        <option value="En revisión">En revisión</option>
+                        <option value="Esperando repuestos">Esperando repuestos</option>
+                        <option value="En reparación">En reparación</option>
+                        <option value="Listo para retirar">Listo para retirar</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-login-submit" style="width: auto; padding: 10px 20px;">Agregar Orden</button>
+            </form>
+        </div>
+
+        <div class="tarjeta-panel" style="margin-top: 20px;">
+            <h3 style="color: #354eab; margin-top: 0;">Órdenes Activas</h3>
+            <div id="lista-ordenes">
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-estado" class="modal-oculto">
+        <div class="modal-contenido">
+            <h3 style="color: #354eab; margin-top: 0;">Modificar Estado</h3>
+            <p style="margin-bottom: 15px;">Seleccioná el nuevo estado para este equipo:</p>
+            
+            <select id="nuevo-estado-select" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
+                <option value="En revisión">En revisión</option>
+                <option value="Esperando repuestos">Esperando repuestos</option>
+                <option value="En reparación">En reparación</option>
+                <option value="Listo para retirar">Listo para retirar</option>
+            </select>
+            
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn-eliminar" style="margin: 0;" onclick="cerrarModal()">Cancelar</button>
+                <button class="btn-accion" style="margin: 0;" onclick="guardarNuevoEstado()">Guardar Cambio</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="panel.js"></script>
+</body>
+</html>
